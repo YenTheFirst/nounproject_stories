@@ -1,0 +1,13 @@
+%h1 Make a story
+- @icons.each do |icon|
+	= icon[:svg]
+<br/>
+%form{:action=>"/save_story",:method=>"post"}
+	- @icons.each_with_index do |icon|
+		%input{:type=>"hidden",:name=>"icons[][num]",:value=>icon[:num]}
+		%input{:type=>"hidden",:name=>"icons[][name]",:value=>icon[:text]}
+		
+	%textarea{:cols=>"60",:rows=>"20",:name=>"story"}
+	%input{:type=>"submit"}
+		Save
+
